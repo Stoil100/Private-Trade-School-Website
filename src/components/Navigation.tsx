@@ -46,26 +46,41 @@ export default function Navigation() {
         <div className="sticky top-0 z-50 flex h-[60px] w-screen max-w-full items-center justify-between bg-white px-6 shadow-xl">
             <div className="mr-5">LOGO</div>
             <Sheet>
-                <SheetTrigger onClick={()=>{setHasLoaded(true)}}>
+                <SheetTrigger
+                    className="sm:hidden"
+                    onClick={() => {
+                        setHasLoaded(true);
+                    }}
+                >
                     <Menu />
                 </SheetTrigger>
                 <SheetContent
                     side="left"
                     className="overflow-y-auto"
-                    onChange={()=>{setHasLoaded(false)}}
+                    onChange={() => {
+                        setHasLoaded(false);
+                    }}
                 >
                     <SheetHeader>
                         <SheetTitle>Menu</SheetTitle>
                     </SheetHeader>
-                    <div  className="flex flex-col gap-2">
-                        {[200,300,500,700,1000].map((item, index) => (
+                    <div className="flex flex-col gap-2">
+                        {[200, 300, 500, 700, 1000].map((item, index) => (
                             <Collapsible key={index}>
-                                <CollapsibleTrigger className={cn(`align-center flex w-full justify-between rounded-md border-2 p-2 text-lg font-bold animate-delay-${item} `,hasLoaded&&" animate-fade-right")}>
+                                <CollapsibleTrigger
+                                    className={cn(
+                                        `align-center flex w-full justify-between rounded-md border-2 p-2 text-lg font-bold animate-delay-${item} `,
+                                        hasLoaded && " animate-fade-right",
+                                    )}
+                                >
                                     Can I use this in my project?
                                     <ChevronDown />
                                 </CollapsibleTrigger>
                                 {Array.from({ length: 5 }).map((_, index) => (
-                                    <CollapsibleContent key={index} className="decoration-dot before:content-['-']">
+                                    <CollapsibleContent
+                                        key={index}
+                                        className="decoration-dot before:content-['-']"
+                                    >
                                         Yes. Free to use for personal and
                                         commercial projects. No attribution
                                         required.
